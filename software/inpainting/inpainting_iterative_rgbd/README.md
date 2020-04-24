@@ -6,6 +6,28 @@ occluding trees, eventually recovering the RGBD footprint of occluded buildings.
 Requires 3 inputs: RGB, DTM and DSM. (Only RGB + DHM is technically required.)
 Produces 3 outputs: Inpainted RGB, DHM and DSM. (DTM remains the same.)
 
+# Results on Synthetic Occlusions
+![qual_synthetic](https://obj.umiacs.umd.edu/deploy-core3d/software/inpainting/inpainting_placeholders/qual.png)
+
+# Results on Real Occlusions (No Ground Truth)
+
+### Example 1
+![r1](https://obj.umiacs.umd.edu/deploy-core3d/software/inpainting/inpainting_placeholders/r1.png)
+
+### Example 2
+![r2](https://obj.umiacs.umd.edu/deploy-core3d/software/inpainting/inpainting_placeholders/r2.png)
+
+### Example 3
+![r3](https://obj.umiacs.umd.edu/deploy-core3d/software/inpainting/inpainting_placeholders/r3.png)
+
+### Example 4
+![r4](https://obj.umiacs.umd.edu/deploy-core3d/software/inpainting/inpainting_placeholders/r4.png)
+
+### Example 5
+![r5](https://obj.umiacs.umd.edu/deploy-core3d/software/inpainting/inpainting_placeholders/r5.png)
+
+# Usage
+
 ```
 Run python inpaint_rgbd_tiled.py to perform tiled iterative inpainting with
 9 repetitions on a large tile from Argentina (corresponding to the example inputs

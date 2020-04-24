@@ -1,12 +1,14 @@
 # RGB Inpainting to Remove Occluding Trees in Satellite Imagery
-
+![placeholder](https://obj.umiacs.umd.edu/deploy-core3d/software/inpainting/inpainting_rgb/placeholder.png)
 Performs inpainting on RGB satellite imagery, attempting to remove occluding
 trees and recover a photorealistic RGB footprint of the building underneath
 the tree. There are 2 types of models:
-* RGBM - This model aggressively removes trees at the expense of blurring
+* **RGBM** - This model aggressively removes trees at the expense of blurring
 building textures.
-* RGBM-UI - Removes trees conservatively, but preserves building textures.
+* **RGBM-UI** - Removes trees conservatively, but preserves building textures.
 
+
+# Usage
 ```
 Running python inpaint_rgb.py without any arguments will perform inpainting
 on the example input in this folder using the rgbm_ui model. Check the 

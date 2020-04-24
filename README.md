@@ -1,5 +1,5 @@
 # Modules for Shadow-Removal, Inpainting and MSI2RGB
-
+![placeholder](https://obj.umiacs.umd.edu/deploy-core3d/placeholder.png)
 The list of modules are as follows:
 * Joint Shadow Removal and Shadow Probability Estimation for Satellite Imagery.
 * Inpainting
