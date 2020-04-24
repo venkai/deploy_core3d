@@ -1,0 +1,23 @@
+# Generic Docker template for all softwares.
+# Don't build it at this folder. Instead, navigate to the respective
+# software folders and build using
+# docker build -t [software-name] -f [relative-path-to-this-file]
+# Example 1: navigate to shadow_removal folder and build using
+# docker build -t venkai/shadow-removal -f ../Dockerfile.template
+# Example 2: navigate to inpainting/inpainting_rgb folder and build using
+# docker build -t venkai/inpainting-rgb -f ../../Dockerfile.template
+# Example 3: navigate to inpainting/inpainting_iterative_rgb folder and build using
+# docker build -t venkai/inpainting-iterative-rgb -f ../../Dockerfile.template
+# Example 4: navigate to msi_to_rgb folder and build using
+# docker build -t venkai/msi-to-rgb -f ../Dockerfile.template
+
+FROM venkai/nvcaffe
+LABEL maintainer="venkai139@gmail.com"
+
+ADD . /workspace
+
+WORKDIR /workspace
+
+RUN chmod 755 download_model.sh && ./download_model.sh && rm -f download_model.sh
+
+CMD cat /workspace/README.md && /bin/bash
