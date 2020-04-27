@@ -1,11 +1,12 @@
-# Modules for Shadow-Removal, Inpainting and MSI2RGB
+# Modules for Shadow-Removal, Inpainting, MSI2RGB and Joint Semantic Segmentation/ Single-View DHM estimation
 ![placeholder](https://obj.umiacs.umd.edu/deploy-core3d/placeholder.png)
 The list of modules are as follows:
 * Joint Shadow Removal and Shadow Probability Estimation for Satellite Imagery.
 * Inpainting
     1. RGB to RGB inpainting
     2. RGBD to RGBD tiled iterative inpainting.
-* 8-band MSI (unknown normalization/sensor data) to photo-realistic RGB, shadow-free RGB and shadow probabilities. 
+* 8-band MSI (unknown normalization/sensor data) to photo-realistic RGB, shadow-free RGB and shadow probabilities.
+* Joint Semantic Segmentation and single-view DHM estimation from satellite imagery.
 
 # Usage (using pre-built docker images on [dockerhub](https://hub.docker.com/u/venkai))
 
@@ -14,6 +15,7 @@ Each module has its own docker image that is built using [NVcaffe-v17](https://g
 - **[RGB inpainting](https://hub.docker.com/r/venkai/inpainting-rgb)** : `docker pull venkai/inpainting-rgb:latest`
 - **[RGBD iterative inpainting](https://hub.docker.com/r/venkai/inpainting-iterative-rgbd)** : `docker pull venkai/inpainting-iterative-rgbd:latest`
 - **[MSI2RGB](https://hub.docker.com/r/venkai/msi-to-rgb)**: `docker pull venkai/msi-to-rgb:latest`
+- **[Joint segmentation/DHM-estimation](https://hub.docker.com/r/venkai/joint-seg-dhm)**: `docker pull venkai/joint-seg-dhm:latest`
 
 To run any module, do
 `docker run --gpus 1 -it venkai/[module-name]`

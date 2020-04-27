@@ -1,0 +1,83 @@
+__author__ = 'venkai'
+__version__ = 1.1
+
+import os
+
+# ----------------------------------------------------
+# DATA I/O
+
+TEST_DIR = './inputs/'
+OUTPUT_DIR = './results/'
+
+if not os.path.isdir(OUTPUT_DIR):
+    os.makedirs(OUTPUT_DIR)
+
+
+CLASS_FILE_STR = '_CLS'
+DEPTH_FILE_STR = '_AGL'
+IMG_FILE_STR = '_RGB'
+MSI_FILE_STR = '_MSI'
+IMG_FILE_EXT = 'tif'
+
+# ----------------------------------------------------
+# MODEL TESTING
+GPU_NUM = 0
+PROTOTXT = './models/rgb_msi_to_agl_cls/test.prototxt'
+CAFFEMODEL = './models/rgb_msi_to_agl_cls/trn_iter_50000.caffemodel'
+CLS_PROTOTXT = './models/rgb_msi_agl_to_cls/test.prototxt'
+CLS_CAFFEMODEL = './models/rgb_msi_agl_to_cls/trn_iter_50000.caffemodel'
+DEPTH_PROTOTXT = './models/rgb_msi_to_agl/test.prototxt'
+DEPTH_CAFFEMODEL = './models/rgb_msi_to_agl/trn_iter_50000.caffemodel'
+
+NUM_CATEGORIES = 5  # for semantic segmentation
+BINARY_CONF_TH = 0.4
+
+# ----------------------------------------------------
+# FLAGS
+
+CLS_PRED_MODE = 0    # Only Predict CLS
+DEPTH_PRED_MODE = 1  # Only Predict DHM
+JOINT_PRED_MODE = 2  # Use a Joint model to predict both DHM and CLS.
+SEP_PRED_MODE = 3    # Separately Predict both DHM and CLS.
+
+CURR_MODE = JOINT_PRED_MODE
+
+RGB_IN = 0         # USE 3-ch RGB as input
+MSI_IN = 1         # Use 8-ch MSI as input
+RGB_MSI_IN = 2     # Use both RGB and MSI (11-ch) as input
+RGB_MSI_AGL_IN = 3 # Use RGB, MSI and AGL (12-ch total) as input
+
+
+# ----------------------------------------------------
+# LABEL MANIPULATION
+
+CONVERT_LABELS = True
+
+LAS_LABEL_GROUND = 2
+LAS_LABEL_TREES = 5
+LAS_LABEL_ROOF = 6
+LAS_LABEL_WATER = 9
+LAS_LABEL_BRIDGE_ELEVATED_ROAD = 17
+LAS_LABEL_VOID = 65
+
+TRAIN_LABEL_GROUND = 0
+TRAIN_LABEL_TREES = 1
+TRAIN_LABEL_BUILDING = 2
+TRAIN_LABEL_WATER = 3
+TRAIN_LABEL_BRIDGE_ELEVATED_ROAD = 4
+TRAIN_LABEL_VOID = NUM_CATEGORIES
+
+LABEL_MAPPING_LAS2TRAIN = {}
+LABEL_MAPPING_LAS2TRAIN[LAS_LABEL_GROUND] = TRAIN_LABEL_GROUND
+LABEL_MAPPING_LAS2TRAIN[LAS_LABEL_TREES] = TRAIN_LABEL_TREES
+LABEL_MAPPING_LAS2TRAIN[LAS_LABEL_ROOF] = TRAIN_LABEL_BUILDING
+LABEL_MAPPING_LAS2TRAIN[LAS_LABEL_WATER] = TRAIN_LABEL_WATER
+LABEL_MAPPING_LAS2TRAIN[LAS_LABEL_BRIDGE_ELEVATED_ROAD] = TRAIN_LABEL_BRIDGE_ELEVATED_ROAD
+LABEL_MAPPING_LAS2TRAIN[LAS_LABEL_VOID] = TRAIN_LABEL_VOID
+
+LABEL_MAPPING_TRAIN2LAS = {}
+LABEL_MAPPING_TRAIN2LAS[TRAIN_LABEL_GROUND] = LAS_LABEL_GROUND
+LABEL_MAPPING_TRAIN2LAS[TRAIN_LABEL_TREES] = LAS_LABEL_TREES
+LABEL_MAPPING_TRAIN2LAS[TRAIN_LABEL_BUILDING] = LAS_LABEL_ROOF
+LABEL_MAPPING_TRAIN2LAS[TRAIN_LABEL_WATER] = LAS_LABEL_WATER
+LABEL_MAPPING_TRAIN2LAS[TRAIN_LABEL_BRIDGE_ELEVATED_ROAD] = LAS_LABEL_BRIDGE_ELEVATED_ROAD

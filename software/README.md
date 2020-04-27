@@ -6,6 +6,7 @@ Each module has its own docker image that is built using [NVcaffe-v17](https://g
 - **[RGB inpainting](https://hub.docker.com/r/venkai/inpainting-rgb)** : `docker pull venkai/inpainting-rgb:latest`
 - **[RGBD iterative inpainting](https://hub.docker.com/r/venkai/inpainting-iterative-rgbd)** : `docker pull venkai/inpainting-iterative-rgbd:latest`
 - **[MSI2RGB](https://hub.docker.com/r/venkai/msi-to-rgb)**: `docker pull venkai/msi-to-rgb:latest`
+- **[Joint segmentation/DHM-estimation](https://hub.docker.com/r/venkai/joint-seg-dhm)**: `docker pull venkai/joint-seg-dhm:latest`
 
 To run any module, do
 `docker run --gpus 1 -it venkai/[module-name]`
