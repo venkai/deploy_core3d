@@ -97,7 +97,7 @@ def deploy_model(img_in, params, mode=2):
     img_in_curr = img_in_curr[np.newaxis,:,:,:]
     log.info('Input Shape: {}'.format(img_in_curr.shape))
     if not H==320 or not W==320:
-        net.blobs['data'].reshape(*img_in.shape)
+        net.blobs['data'].reshape(*img_in_curr.shape)
         net.reshape()
     net.blobs['data'].data[...] = img_in_curr
     net.forward()
